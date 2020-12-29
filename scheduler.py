@@ -1,11 +1,14 @@
 from telegram import Bot
 import schedule
+import os
 
-from config import bot_token_id, channel_chat_id
 from utils import get_quote
 
 
 def post_quote():
+    bot_token_id = os.environ.get('BOT_TOKEN_ID')
+    channel_chat_id = os.environ.get('CHANNEL_CHAT_ID')
+
     quote, author = get_quote()
     message = f'{quote}\n\n{author}'
 
